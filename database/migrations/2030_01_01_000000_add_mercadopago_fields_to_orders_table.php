@@ -19,7 +19,7 @@ return new class extends Migration
         });
 
         // Modify ENUM using raw SQL as Laravel requires doctrine/dbal for changing enum columns
-        DB::statement("ALTER TABLE orders MODIFY COLUMN status ENUM('PENDING', 'COOKING', 'SERVED', 'CANCELLED', 'PAID') DEFAULT 'PENDING'");
+        //DB::statement("ALTER TABLE orders MODIFY COLUMN status ENUM('PENDING', 'COOKING', 'SERVED', 'CANCELLED', 'PAID') DEFAULT 'PENDING'");
     }
 
     /**
