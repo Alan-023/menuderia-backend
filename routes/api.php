@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\productController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RestaurantTableController;
@@ -29,12 +29,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Rutas productos
-    Route::get('/products', [App\Http\Controllers\productController::class,'listado']); //Tiramos mas mole que arroz
-    Route::get('/products', [App\Http\Controllers\productController::class, 'index']);
-    Route::post('/products', [App\Http\Controllers\productController::class,'store']);
-    Route::get('/products/{id}', [App\Http\Controllers\productController::class,'show']);
-    Route::put('/products/{id}', [App\Http\Controllers\productController::class,'update']);
-    Route::delete('/products/{id}', [App\Http\Controllers\productController::class, 'destroy']);
+    Route::get('/products', [App\Http\Controllers\ProductController::class, 'index']);
+    Route::post('/products', [App\Http\Controllers\ProductController::class,'store']);
+    Route::get('/products/{id}', [App\Http\Controllers\ProductController::class,'show']);
+    Route::put('/products/{id}', [App\Http\Controllers\ProductController::class,'update']);
+    Route::delete('/products/{id}', [App\Http\Controllers\ProductController::class, 'destroy']);
 
     // Rutas categories
     Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index']);
