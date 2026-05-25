@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\product; // Ojo: asegurate de que aqui diga 'product' tal cual lo tenias en tu modelo
+use App\Models\Product; 
 
-class productController extends Controller
+class ProductController extends Controller
 {
     public function index() {
-        return product::all();
+        return Product::all();
     }
 
     public function store(Request $request) {
@@ -21,7 +21,7 @@ class productController extends Controller
             'is_available' => 'nullable|boolean'
         ]);
 
-        $productoNuevo = new product();
+        $productoNuevo = new Product();
         $productoNuevo->name = $request->name;
         $productoNuevo->description = $request->description;
         $productoNuevo->price = $request->price;
@@ -35,11 +35,11 @@ class productController extends Controller
 
     public function show($id) {
         // EL SEGURO
-        return product::findOrFail($id);
+        return Product::findOrFail($id);
     }
 
     public function update(Request $request, $id) {
-        $productoAEditar = product::findOrFail($id);
+        $productoAEditar = Product::findOrFail($id);
 
         $request->validate([
             'name' => 'required|string|max:100',
@@ -60,7 +60,7 @@ class productController extends Controller
     }
 
     public function destroy($id) {
-        $productoAEliminar = product::findOrFail($id);
+        $productoAEliminar = Product::findOrFail($id);
         $productoAEliminar->delete();
         return ["mensaje" => "Platillo eliminado con exito", "id_borrado" => $id];
     }
